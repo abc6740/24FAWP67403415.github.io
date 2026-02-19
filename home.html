@@ -78,11 +78,12 @@
 </header>
 
 <nav>
-    <a href="#about">About</a>
-    <a href="#services">Services</a>
-    <a href="#benefits">Benefits</a>
-    <a href="#contact">Contact</a>
+    <a href="#" onclick="navigateTo('about')">About</a>
+    <a href="#" onclick="navigateTo('services')">Services</a>
+    <a href="#" onclick="navigateTo('benefits')">Benefits</a>
+    <a href="#" onclick="navigateTo('contact')">Contact</a>
 </nav>
+
 
 <div class="container">
     <!-- Language Selector -->
@@ -94,12 +95,12 @@
 
     <!-- English Content -->
     <div class="lang en active">
-        <section id="about">
+        <section id="about-en">
             <h2>About FAWP</h2>
             <p>The Digital Farmer Assistance & Welfare Platform (FAWP) is a technology-based system designed to support farmers by providing easy digital access to agricultural services and government welfare schemes. It helps farmers make informed decisions, improve productivity, and enhance their overall socio-economic condition.</p>
         </section>
 
-        <section id="services">
+        <section id="services-en">
             <h2>Our Services</h2>
             <div class="features">
                 <div class="card" onclick="openWeatherPage()">
@@ -121,12 +122,12 @@
             </div>
         </section>
 
-        <section id="benefits">
+        <section id="benefits-en">
             <h2>Welfare & Benefits</h2>
             <p>FAWP ensures transparent and efficient delivery of government welfare schemes, subsidies, and insurance benefits. By minimizing manual processes and intermediaries, the platform guarantees timely assistance and accountability.</p>
         </section>
 
-        <section id="contact">
+        <section id="contact-en">
             <h2>Contact Us</h2>
             <p>Email: support@fawp.gov</p>
             <p>Helpline: 1800-123-456</p>
@@ -135,12 +136,12 @@
 
     <!-- Hindi Content -->
     <div class="lang hi">
-        <section id="about">
+        <section id="about-hi">
             <h2>FAWP के बारे में</h2>
             <p>डिजिटल किसान सहायता और कल्याण प्लेटफ़ॉर्म (FAWP) एक तकनीकी-आधारित प्रणाली है जो किसानों को कृषि सेवाओं और सरकारी कल्याण योजनाओं तक आसान डिजिटल पहुँच प्रदान करता है। यह किसानों को सूचित निर्णय लेने, उत्पादकता बढ़ाने और उनके सामाजिक-आर्थिक स्थिति में सुधार करने में मदद करता है।</p>
         </section>
 
-        <section id="services">
+        <section id="services-hi">
             <h2>हमारी सेवाएँ</h2>
             <div class="features">
                 <div class="card" onclick="openWeatherPage()">
@@ -162,12 +163,12 @@
             </div>
         </section>
 
-        <section id="benefits">
+        <section id="benefits-hi">
             <h2>कल्याण और लाभ</h2>
             <p>FAWP सरकारी कल्याण योजनाओं, सब्सिडी और बीमा लाभों की पारदर्शी और कुशल डिलीवरी सुनिश्चित करता है। मैनुअल प्रक्रियाओं और मध्यस्थों को कम करके प्लेटफ़ॉर्म समय पर सहायता और जवाबदेही सुनिश्चित करता है।</p>
         </section>
 
-        <section id="contact">
+        <section id="contact-hi">
             <h2>संपर्क करें</h2>
             <p>Email: support@fawp.gov</p>
             <p>हेल्पलाइन: 1800-123-456</p>
@@ -176,12 +177,12 @@
 
     <!-- Telugu Content -->
     <div class="lang te">
-        <section id="about">
+        <section id="about-te">
             <h2>FAWP గురించి</h2>
             <p>డిజిటల్ ఫార్మర్ అసిస్టెన్స్ & వెల్ఫేర్ ప్లాట్ఫారం (FAWP) ఒక సాంకేతిక ఆధారిత వ్యవస్థ, ఇది రైతులకు వ్యవసాయ సేవలు మరియు ప్రభుత్వ సంక్షేమ పథకాలకి సులభ డిజిటల్ యాక్సెస్ అందిస్తుంది. ఇది రైతులు సమగ్ర నిర్ణయాలు తీసుకోవడానికి, ఉత్పత్తిని మెరుగుపరచడానికి మరియు వారి సామాజిక-ఆర్ధిక పరిస్థితిని పెంచడానికి సహాయపడుతుంది.</p>
         </section>
 
-        <section id="services">
+        <section id="services-te">
             <h2>మా సేవలు</h2>
             <div class="features">
                 <div class="card" onclick="openWeatherPage()">
@@ -203,12 +204,12 @@
             </div>
         </section>
 
-        <section id="benefits">
+        <section id="benefits-te">
             <h2>సంక్షేమం & లాభాలు</h2>
             <p>FAWP ప్రభుత్వ సంక్షేమ పథకాల, సబ్సిడీలు మరియు బీమా లాభాల పారదర్శక మరియు సమర్ధవంతమైన డెలివరీని నిర్ధారిస్తుంది. మాన్యువల్ ప్రాసెస్‌లను మరియు మధ్యవర్తులను తగ్గించడం ద్వారా, ప్లాట్ఫారం సమయోచిత సహాయం మరియు జవాబుదారితనాన్ని అందిస్తుంది.</p>
         </section>
 
-        <section id="contact">
+        <section id="contact-te">
             <h2>మాకు సంప్రదించండి</h2>
             <p>Email: support@fawp.gov</p>
             <p>హెల్ప్‌లైన్: 1800-123-456</p>
@@ -253,8 +254,19 @@
     function openSchemesPage(){
         window.location.href="schemes.html";
     }
+    function navigateTo(section) {
+    const currentLang = localStorage.getItem('language') || 'en';
+    const targetId = section + '-' + currentLang;
+    const targetSection = document.getElementById(targetId);
+
+    if (targetSection) {
+        targetSection.scrollIntoView({ behavior: "smooth" });
+    }
+}
+
 </script>
 
 
 </body>
 </html>
+

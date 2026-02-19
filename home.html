@@ -76,13 +76,13 @@
     <h1>Digital Farmer Assistance & Welfare Platform (FAWP)</h1>
     <p>Empowering Farmers Through Digital Technology</p>
 </header>
-
 <nav>
-    <a href="#" onclick="navigateTo('about')">About</a>
-    <a href="#" onclick="navigateTo('services')">Services</a>
-    <a href="#" onclick="navigateTo('benefits')">Benefits</a>
-    <a href="#" onclick="navigateTo('contact')">Contact</a>
+    <a href="#" id="nav-about" onclick="navigateTo('about')">About</a>
+    <a href="#" id="nav-services" onclick="navigateTo('services')">Services</a>
+    <a href="#" id="nav-benefits" onclick="navigateTo('benefits')">Benefits</a>
+    <a href="#" id="nav-contact" onclick="navigateTo('contact')">Contact</a>
 </nav>
+
 
 
 <div class="container">
@@ -191,7 +191,7 @@
                 </div>
                 <div class="card" onclick="openServerPage()">
                     <h3>🌱 పంట మార్గదర్శకం</h3>
-                    <p>పంట ఎంపిక, విత్తనం, నీటిపోసడం మరియు కీటకాలు నియంత్రణ పై నిపుణుల సలహా. ఉత్పత్తిని పెంచడానికి మరియు రిస్క్ తగ్గించడానికి ఆధునిక మరియు సుస్థిర వ్యవసాయ పద్ధతులు.</p>
+                    <p>పంట ఎంపిక, విత్తనం, నీటిపోసడం మరియు pests నియంత్రణ పై నిపుణుల సలహా. ఉత్పత్తిని పెంచడానికి మరియు రిస్క్ తగ్గించడానికి ఆధునిక మరియు సుస్థిర వ్యవసాయ పద్ధతులు.</p>
                 </div>
                 <div class="card">
                     <h3>📊 మార్కెట్ ధరలు</h3>
@@ -236,13 +236,39 @@
         switchLanguage(selectedLang);
     });
 
-    function switchLanguage(lang) {
-        document.querySelectorAll('.lang').forEach(function(div){
-            div.classList.remove('active');
-        });
-        const activeDiv = document.querySelector('.' + lang);
-        if(activeDiv) activeDiv.classList.add('active');
+function switchLanguage(lang) {
+    // Hide all languages
+    document.querySelectorAll('.lang').forEach(function(div){
+        div.classList.remove('active');
+    });
+
+    // Show selected language
+    const activeDiv = document.querySelector('.' + lang);
+    if(activeDiv) activeDiv.classList.add('active');
+
+    // Change navigation text
+    if(lang === "en") {
+        document.getElementById("nav-about").innerText = "About";
+        document.getElementById("nav-services").innerText = "Services";
+        document.getElementById("nav-benefits").innerText = "Benefits";
+        document.getElementById("nav-contact").innerText = "Contact";
     }
+
+    if(lang === "hi") {
+        document.getElementById("nav-about").innerText = "परिचय";
+        document.getElementById("nav-services").innerText = "सेवाएँ";
+        document.getElementById("nav-benefits").innerText = "लाभ";
+        document.getElementById("nav-contact").innerText = "संपर्क";
+    }
+
+    if(lang === "te") {
+        document.getElementById("nav-about").innerText = "గురించి";
+        document.getElementById("nav-services").innerText = "సేవలు";
+        document.getElementById("nav-benefits").innerText = "లాభాలు";
+        document.getElementById("nav-contact").innerText = "సంప్రదించండి";
+    }
+}
+
 
     // Navigation functions
     function openWeatherPage() {
@@ -269,4 +295,3 @@
 
 </body>
 </html>
-

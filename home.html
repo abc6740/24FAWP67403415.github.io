@@ -111,7 +111,7 @@
                     <h3>🌱 Crop Guidance</h3>
                     <p>Expert advice on crop selection, sowing, irrigation, and pest control. Modern and sustainable farming techniques to increase yield and reduce risk.</p>
                 </div>
-                <div class="card">
+                <div class="card"onclick="openMarketPage()">
                     <h3>📊 Market Prices</h3>
                     <p>Latest market rates to ensure fair pricing and better profit for farmers.</p>
                 </div>
@@ -152,7 +152,7 @@
                     <h3>🌱 फसल मार्गदर्शन</h3>
                     <p>फसल चयन, बुवाई, सिंचाई और कीट नियंत्रण पर विशेषज्ञ सलाह। आधुनिक और टिकाऊ कृषि तकनीकें ताकि उपज बढ़े और जोखिम कम हो।</p>
                 </div>
-                <div class="card">
+                <div class="card"onclick="openMarketPage()">
                     <h3>📊 बाज़ार मूल्य</h3>
                     <p>ताजा बाजार दरें ताकि किसानों को उचित मूल्य और बेहतर लाभ सुनिश्चित हो सके।</p>
                 </div>
@@ -193,7 +193,7 @@
                     <h3>🌱 పంట మార్గదర్శకం</h3>
                     <p>పంట ఎంపిక, విత్తనం, నీటిపోసడం మరియు pests నియంత్రణ పై నిపుణుల సలహా. ఉత్పత్తిని పెంచడానికి మరియు రిస్క్ తగ్గించడానికి ఆధునిక మరియు సుస్థిర వ్యవసాయ పద్ధతులు.</p>
                 </div>
-                <div class="card">
+                <div class="card"onclick="openMarketPage()">
                     <h3>📊 మార్కెట్ ధరలు</h3>
                     <p>రైతులకు సరైన ధరలు మరియు మెరుగైన లాభం కోసం తాజా మార్కెట్ రేట్లు.</p>
                 </div>
@@ -276,6 +276,9 @@ function switchLanguage(lang) {
     }
     function openServerPage(){
         window.location.href="BestPracticesServer1.html";
+    }
+    function openMarketPage(){
+        window.location.href="market.html";
     }
     function openSchemesPage(){
         window.location.href="schemes.html";

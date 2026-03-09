@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Farmer Friendly Market Prices</title>
+<style>
+  body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #a8edea, #fed6e3);
+    color: #333;
+  }
+
+  h1 {
+    text-align: center;
+    padding: 20px 0;
+    color: #2e8b57;
+    font-size: 2.2em;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  }
+
+  #search-container {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  #search {
+    padding: 12px;
+    width: 320px;
+    border-radius: 25px;
+    border: 2px solid #2e8b57;
+    font-size: 16px;
+    transition: all 0.3s;
+  }
+  #search:focus {
+    outline: none;
+    border-color: #4caf50;
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.5);
+  }
+
+  #market-prices {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    max-width: 1000px;
+    margin: 0 auto 50px;
+    padding: 0 10px;
+  }
+
+  .price-card {
+    background: #e0f7fa;
+    border-radius: 12px;
+    padding: 15px 20px;
+    width: 200px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s, background 0.3s;
+    cursor: pointer;
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+  }
+  .price-card:hover {
+    transform: translateY(-5px);
+    background: #b2ebf2;
+  }
+
+  .price-card span {
+    display: block;
+    margin: 5px 0;
+  }
+
+  .crop-name {
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #2e7d32;
+  }
+
+  .crop-price {
+    font-size: 0.95em;
+    color: #555;
+  }
+
+  .no-result {
+    text-align: center;
+    color: #d32f2f;
+    font-weight: bold;
+    font-size: 1.2em;
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+</style>
+</head>
+<body>
+
+<h1>📊 Farmer Market Prices</h1>
+
+<div id="search-container">
+  <input type="text" id="search" placeholder="Search for a crop, vegetable or fruit..." />
+</div>
+
+<div id="market-prices"></div>
+
+<script>
+let pricesData = {};
+
+// Load prices.json
+fetch("prices.json")
+  .then(response => response.json())
+  .then(data => { pricesData = data; })
+  .catch(error => {
+    console.error("Error loading prices:", error);
+    const container = document.getElementById("market-prices");
+    container.style.display = "block";
+    container.textContent = "Failed to load prices.";
+  });
+
+// Display function
+function displayPrices(crops) {
+  const container = document.getElementById("market-prices");
+  container.innerHTML = "";
+  container.style.display = "flex";
+
+  if (crops.length === 0) {
+    const noResult = document.createElement("div");
+    noResult.className = "no-result";
+    noResult.textContent = "No crops found!";
+    container.appendChild(noResult);
+    return;
+  }
+
+  crops.forEach(crop => {
+    const priceQuintal = pricesData[crop].quintal;
+    const priceKg = pricesData[crop].kg;
+
+    const card = document.createElement("div");
+    card.className = "price-card";
+    card.innerHTML = `
+      <span class="crop-name">${capitalize(crop)}</span>
+      <span class="crop-price">₹${priceQuintal}/quintal</span>
+      <span class="crop-price">₹${priceKg}/kg</span>
+    `;
+
+    // Click event to show only this card
+    card.addEventListener("click", () => {
+      const allCards = document.querySelectorAll(".price-card");
+      allCards.forEach(c => {
+        if (c !== card) c.style.display = "none";
+      });
+    });
+
+    container.appendChild(card);
+  });
+}
+
+// Search filter
+document.getElementById("search").addEventListener("input", function() {
+  const query = this.value.toLowerCase();
+  if (query.trim() === "") {
+    document.getElementById("market-prices").style.display = "none";
+    return;
+  }
+  const filtered = Object.keys(pricesData).filter(crop => crop.toLowerCase().includes(query));
+  displayPrices(filtered);
+});
+
+// Capitalize first letter
+function capitalize(str) {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
+</script>
+
+</body>
+</html>
